@@ -42,13 +42,16 @@ mic.ondisconnected = function () {
   info("Microphone is not connected");
 };
 
-mic.connect("CLIENT_TOKEN");
-// mic.start();
-// mic.stop();
-
 function kv (k, v) {
   if (toString.call(v) !== "[object String]") {
     v = JSON.stringify(v);
   }
   return k + "=" + v + "\n";
 }
+
+document.getElementById('connect').addEventListener('click', function() {
+  var clientAccessToken = document.getElementById('token').value;
+  mic.connect(clientAccessToken);
+  // mic.start();
+  // mic.stop();
+});
