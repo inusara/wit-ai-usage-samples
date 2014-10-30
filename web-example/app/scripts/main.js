@@ -30,6 +30,10 @@ mic.onresult = function (intent, entities) {
     }
   }
 
+  if(entities.phrase_to_translate) {
+    translateIntent(intent, entities.phrase_to_translate['value']);
+  }
+  
   document.getElementById("result").innerHTML = r;
 };
 mic.onerror = function (err) {
@@ -55,3 +59,9 @@ document.getElementById('connect').addEventListener('click', function() {
   // mic.start();
   // mic.stop();
 });
+
+function translateIntent(intent, value) {
+  if(intent === 'change_background_color') {
+    document.body.style.background = value;
+  }
+}
